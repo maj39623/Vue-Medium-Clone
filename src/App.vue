@@ -1,8 +1,21 @@
 <template>
-  <div>
-    <h1>Medium Clone</h1>
+  <div id="app">
+    <mcv-topbar />
     <router-view></router-view>
   </div>
 </template>
 
-<style></style>
+<script>
+import McvTopbar from "@/components/Topbar.vue";
+import { actionTypes } from "@/store/modules/auth";
+
+export default {
+  name: "App",
+  components: {
+    McvTopbar,
+  },
+  mounted() {
+    this.$store.dispatch(actionTypes.getCurrentUser);
+  },
+};
+</script>

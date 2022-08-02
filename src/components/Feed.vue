@@ -1,9 +1,9 @@
 <template>
-  <div>Home</div>
+  <div>Feed</div>
 </template>
 
 <script>
 export default {
-  name: "HomeView",
+  name: "McvFeed",
 };
 </script>

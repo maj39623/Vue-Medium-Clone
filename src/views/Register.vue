@@ -7,13 +7,17 @@
           <p class="text-xs-center">
             <router-link to="{name: 'login'}">Need an account?</router-link>
           </p>
-          VALIDATION ERRORS
+          <mcv-validation-errors
+            v-if="validationErrors"
+            :validation-errors="validationErrors"
+          ></mcv-validation-errors>
           <form @submit.prevent="onSubmit">
             <fieldset class="form-group">
               <input
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Username"
+                v-model="username"
               />
             </fieldset>
 
@@ -22,6 +26,7 @@
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Email"
+                v-model="email"
               />
             </fieldset>
 
@@ -30,6 +35,7 @@
                 type="password"
                 class="form-control form-control-lg"
                 placeholder="Password"
+                v-model="password"
               />
             </fieldset>
             <button
@@ -46,11 +52,26 @@
 </template>
 
 <script>
+import McvValidationErrors from "@/components/ValidationErrors.vue";
+
 export default {
   name: "McvRegister",
+  components: {
+    McvValidationErrors,
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      username: "",
+    };
+  },
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting;
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors;
     },
   },
   methods: {
@@ -58,12 +79,12 @@ export default {
       console.log("onSubmit");
       this.$store
         .dispatch("register", {
-          email: "maj39623@gmail.com",
-          username: "maj39623",
-          password: "test123",
+          email: this.email,
+          username: this.username,
+          password: this.password,
         })
-        .then((result) => {
-          console.log("result from register action", result);
+        .then(() => {
+          this.$router.push({ name: "home" });
         });
     },
   },

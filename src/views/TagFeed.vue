@@ -8,6 +8,7 @@
         </div>
         <div class="col-md-3">
           <mcv-popular-tags></mcv-popular-tags>
+          ==={{ tagName }}===
         </div>
       </div>
     </div>
@@ -20,17 +21,22 @@ import McvPopularTags from "@/components/PopularTags.vue";
 import McvBanner from "@/components/Banner.vue";
 
 export default {
-  name: "McvGlobalFeed",
+  name: "McvYourFeed",
   components: {
     McvFeed,
     McvPopularTags,
     McvBanner,
   },
-  data() {
-    return {
-      apiUrl: "/articles",
-    };
+  computed: {
+    tagName() {
+      return this.$route.params.slug;
+    },
   },
+  //   data() {
+  //     return {
+  //       apiUrl: "/articles/feed",
+  //     };
+  //   },
 };
 </script>
 

@@ -28,14 +28,14 @@
               class="btn btn-outline-secondary btn-sm"
               :to="{ name: 'editArticle', params: { slug: article.slug } }"
             >
-              <i class="ion-edit"></i>
+              <i class="ion-edit" />
               Edit Article
             </router-link>
             <button
               class="btn btn-outline-danger btn-sm"
               @click="deleteArticle"
             >
-              <i class="ion-trash-a"></i>
+              <i class="ion-trash-a" />
               Delete Article
             </button>
           </span>
@@ -43,14 +43,14 @@
       </div>
     </div>
     <div class="container page">
-      <mcv-loading v-if="isLoading"></mcv-loading>
-      <mcv-error-message v-if="isLoading" :message="error"></mcv-error-message>
+      <mcv-loading v-if="isLoading" />
+      <mcv-error-message v-if="isLoading" :message="error" />
       <div class="row article-content" v-if="article">
         <div class="col-xs-12">
           <div>
             <p>{{ article.body }}</p>
           </div>
-          <mcv-tag-list :tags="article.tagList"></mcv-tag-list>
+          <mcv-tag-list :tags="article.tagList" />
         </div>
       </div>
     </div>
@@ -62,9 +62,9 @@ import { mapState, mapGetters } from "vuex";
 
 import { actionTypes as articleActionTypes } from "@/store/modules/article";
 import { getterTypes as authGetterTypes } from "@/store/modules/auth";
-import McvLoading from "@/components/Loading.vue";
-import McvErrorMessage from "@/components/ErrorMessage.vue";
-import McvTagList from "@/components/TagList.vue";
+import McvLoading from "@/components/Loading";
+import McvErrorMessage from "@/components/ErrorMessage";
+import McvTagList from "@/components/TagList";
 
 export default {
   name: "McvArticle",
@@ -86,6 +86,7 @@ export default {
       if (!this.currentUser || !this.article) {
         return false;
       }
+
       return this.currentUser.username === this.article.author.username;
     },
   },
@@ -107,5 +108,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

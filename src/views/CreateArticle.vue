@@ -4,13 +4,14 @@
     :errors="validationErrors"
     :isSubmitting="isSubmitting"
     @articleSubmit="onSubmit"
-  ></mcv-article-form>
+  >
+  </mcv-article-form>
 </template>
 
 <script>
 import { mapState } from "vuex";
 
-import McvArticleForm from "@/components/ArticleForm.vue";
+import McvArticleForm from "@/components/ArticleForm";
 import { actionTypes } from "@/store/modules/createArticle";
 
 export default {
@@ -48,5 +49,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

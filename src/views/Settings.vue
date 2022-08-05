@@ -1,5 +1,5 @@
 <template>
-  <div class="setttings-page" v-if="currentUser">
+  <div class="settings-page" v-if="currentUser">
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
@@ -7,7 +7,7 @@
           <mcv-validation-errors
             v-if="validationErrors"
             :validation-errors="validationErrors"
-          ></mcv-validation-errors>
+          />
           <form @submit.prevent="onSubmit">
             <fieldset>
               <fieldset class="form-group">
@@ -30,7 +30,6 @@
 
               <fieldset class="form-group">
                 <textarea
-                  type="text"
                   class="form-control form-control-lg"
                   v-model="form.bio"
                   placeholder="Short bio about you"
@@ -48,10 +47,10 @@
 
               <fieldset class="form-group">
                 <input
-                  type="text"
+                  type="password"
                   class="form-control form-control-lg"
                   v-model="form.password"
-                  placeholder="Password"
+                  placeholder="New password"
                 />
               </fieldset>
               <button
@@ -65,7 +64,7 @@
           </form>
           <hr />
           <button class="btn btn-outline-danger" @click="logout" type="text">
-            Or click here to logout
+            Or cick here to logout
           </button>
         </div>
       </div>
@@ -79,7 +78,7 @@ import {
   getterTypes as authGetterTypes,
   actionTypes as authActionTypes,
 } from "@/store/modules/auth";
-import McvValidationErrors from "@/components/ValidationErrors.vue";
+import McvValidationErrors from "@/components/ValidationErrors";
 
 export default {
   name: "McvSettings",
@@ -104,6 +103,7 @@ export default {
           password: "",
         };
       }
+
       return {
         username: "",
         bio: "",
@@ -120,10 +120,10 @@ export default {
       });
     },
     logout() {
-      console.log("logout");
+      this.$store.dispatch(authActionTypes.logout).then(() => {
+        this.$router.push({ name: "globalFeed" });
+      });
     },
   },
 };
 </script>
-
-<style></style>

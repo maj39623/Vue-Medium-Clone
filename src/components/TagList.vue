@@ -8,12 +8,12 @@
 
 <script>
 export default {
-  name: "McvTagList",
+  name: 'McvTagList',
   props: {
     tags: {
       type: Array,
-      required: true,
-    },
-  },
-};
+      required: true
+    }
+  }
+}
 </script>

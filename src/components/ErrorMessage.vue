@@ -1,18 +1,18 @@
 <template>
-  <div>{{ message }}</div>
+  <div>
+    {{ message }}
+  </div>
 </template>
 
 <script>
 export default {
-  name: "McvErrorMessage",
+  name: 'McvErrorMessage',
   props: {
     message: {
       type: String,
       required: false,
-      default: "Something went wrong",
-    },
-  },
-};
+      default: 'Something went wrong'
+    }
+  }
+}
 </script>
-
-<style></style>

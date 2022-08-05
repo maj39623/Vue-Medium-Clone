@@ -3,7 +3,10 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-10 offset-md-1 col-xs-12">
-          VALIDATION errors
+          <mcv-validation-errors
+            v-if="errors"
+            :validation-errors="errors"
+          ></mcv-validation-errors>
           <form @submit.prevent="onSubmit">
             <fieldset>
               <fieldset class="form-group">
@@ -55,6 +58,8 @@
 </template>
 
 <script>
+import McvValidationErrors from "@/components/ValidationErrors";
+
 export default {
   name: "McvArticleForm",
   props: {
@@ -71,12 +76,15 @@ export default {
       required: true,
     },
   },
+  components: {
+    McvValidationErrors,
+  },
   data() {
     return {
-      title: "",
-      description: "",
-      body: "",
-      tagList: "",
+      title: this.initialValues.title,
+      description: this.initialValues.description,
+      body: this.initialValues.body,
+      tagList: this.initialValues.tagList.join(" "),
     };
   },
   methods: {
@@ -85,7 +93,7 @@ export default {
         title: this.title,
         description: this.description,
         body: this.body,
-        tagList: this.tagList,
+        tagList: this.tagList.split(" "),
       };
       this.$emit("articleSubmit", form);
     },

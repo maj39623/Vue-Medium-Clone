@@ -18,7 +18,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'globalFeed' }">
+            <router-link class="nav-link" :to="{ name: 'settings' }">
               <i class="ion-gear-a" />
               &nbsp; Settings
             </router-link>

@@ -1,4 +1,4 @@
-# mediumclone_vue
+# Coding Denclone_vue
 
 ## Project setup
 
@@ -27,4 +27,4 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
-#Medium-Clone-Vuejs
+#Coding Den-Clone-Vuejs
